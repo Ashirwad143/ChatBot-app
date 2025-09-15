@@ -6,7 +6,13 @@ import cors from "cors";
 
 const app=express()
 dotenv.config()
-app.use(cors())
+app.use(cors(
+    {
+        origin:'*',
+        methods:["POST","GET"],
+        credentials:true
+    }
+));
 app.use(express.json())
 const PORT=process.env.PORT || 3000
 app.use("/api/chatbot",chatBot);      //Define the route for chatbot
