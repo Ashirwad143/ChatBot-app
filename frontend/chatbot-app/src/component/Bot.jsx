@@ -16,9 +16,11 @@ function Bot() {
         setLoading(true);
         if(!input.trim()) return;
         try {
-           const res=await axios.post("http://localhost:4002/api/chatbot/message",{
-                text: input
-            })
+            const api = "https://chatbotapp-0kfo.onrender.com"; 
+              const res = await axios.post(`${api}/api/chatbot/message`, {
+            text: input,
+          });
+           
             if(res.status === 200) {
                 setMessages([...messages, { text: res.data.userMessage, sender: 'user' }, { text: res.data.botMessage, sender: 'bot' }]);
                
